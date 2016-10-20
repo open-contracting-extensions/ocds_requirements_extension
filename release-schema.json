@@ -1,0 +1,196 @@
+{
+  "definitions": {
+    "Criterion": {
+      "type": "object",
+      "title": "Criterion",
+      "description": "A criterion on which either bidders or items will be judged, evaluated or assessed.",
+      "required": [
+        "id"
+      ],
+      "properties": {
+        "id": {
+          "description": "The identifier for this criterion. It must be unique and cannot change within the Open Contracting Process it is part of (defined by a single ocid). See the [identifier guidance](http://standard.open-contracting.org/latest/en/schema/identifiers/) for further details.",
+          "type": [
+            "string",
+            "integer"
+          ],
+          "mergeStrategy": "overwrite"
+        },
+        "title": {
+          "description": "Criterion title",
+          "type": [
+            "string",
+            "null"
+          ],
+          "mergeStrategy": "ocdsVersion"
+        },
+        "description": {
+          "description": "Criterion description",
+          "type": [
+            "string",
+            "null"
+          ],
+          "mergeStrategy": "ocdsVersion"
+        },
+        "source": {
+          "description": "Source of response to the requirements specificed in the criterion, for example responses may be submitted by tenderers or by an assessment committee at the procuringEntity.",
+          "type": "string",
+          "enum": [
+            "tenderer",
+            "buyer",
+            "procuringEntity"
+          ],
+          "mergeStrategy": "ocdsVersion"
+        },
+        "relatesTo": {
+          "description": "The schema element that the criterion judges, evaluates or assesses. For example criterion may be defined against items or against bidders.",
+          "type": "string",
+          "enum": [
+            "item",
+            "tenderer"
+          ],
+          "mergeStrategy": "ocdsVersion"
+        },
+        "relatedItem": {
+          "description": "Where relatesTo = \"item\" this field must be populated with the id of the item the criterion relates to. Where relatesTo <> \"item\" this field should be omitted",
+          "type": [
+            "string",
+            "null"
+          ],
+          "mergeStrategy": "ocdsVersion"
+        },
+        "requirementGroups": {
+          "title": "Requirement groups",
+          "description": "A list of requirement groups for this Criterion. A criterion is satisfied by one or more requirement groups being met. A requirement group is met when all requirements in the group are satisfied.",
+          "type": "array",
+          "mergeStrategy": "arrayMergeById",
+          "mergeOptions": {
+            "idRef": "id"
+          },
+          "items": {
+            "$ref": "#/definitions/RequirementGroup"
+          },
+          "uniqueItems": true
+        }
+      }
+    },
+    "RequirementGroup": {
+      "type": "object",
+      "title": "Requirement group",
+      "description": "A requirement group is a set of requirements that must be fulfilled together to validate a criterion.",
+      "required": [
+        "id"
+      ],
+      "properties": {
+        "id": {
+          "description": "The identifier for this requirement group. It must be unique and cannot change within the Open Contracting Process it is part of (defined by a single ocid). See the [identifier guidance](http://standard.open-contracting.org/latest/en/schema/identifiers/) for further details.",
+          "type": "string",
+          "mergeStrategy": "overwrite"
+        },
+        "description": {
+          "description": "Requirement group description",
+          "type": [
+            "string",
+            "null"
+          ],
+          "mergeStrategy": "ocdsVersion"
+        },
+        "requirements": {
+          "$ref": "#/definitions/Requirement"
+        }
+      }
+    },
+    "Requirement": {
+      "type": "object",
+      "title": "Requirement",
+      "description": "An atomic requirement. Requirements can specify the expected value that the response has to contain, or a range of threshold values within which the response has to fit in. The requirement may apply to a certain period of time",
+      "required": [
+        "id"
+      ],
+      "properties": {
+        "id": {
+          "description": "The identifier for this requirement. It must be unique and cannot change within the Open Contracting Process it is part of (defined by a single ocid). See the [identifier guidance](http://standard.open-contracting.org/latest/en/schema/identifiers/) for further details.",
+          "type": "string",
+          "mergeStrategy": "overwrite"
+        },
+        "title": {
+          "description": "Requirement title",
+          "type": [
+            "string",
+            "null"
+          ],
+          "mergeStrategy": "ocdsVersion"
+        },
+        "description": {
+          "description": "Requirement description",
+          "type": [
+            "string",
+            "null"
+          ],
+          "mergeStrategy": "ocdsVersion"
+        },
+        "dataType": {
+          "description": "Requirement description",
+          "type": [
+            "string",
+            "null"
+          ],
+          "enum": [
+            "string",
+            "date-time",
+            "number",
+            "integer"
+          ],
+          "mergeStrategy": "ocdsVersion"
+        },
+        "pattern": {
+          "description": "A regular expression against which validate the requirement response",
+          "type": [
+            "string",
+            "null"
+          ],
+          "mergeStrategy": "ocdsVersion"
+        },
+        "expectedValue": {
+          "description": "Used to state the requirement when the response must be particular value",
+          "type": [
+            "string",
+            "integer",
+            "number",
+            "null"
+          ],
+          "mergeStrategy": "ocdsVersion"
+        },
+        "minValue": {
+          "description": "Used to state the lower bound of the requirement when the response must be within a certain range",
+          "type": [
+            "integer",
+            "number",
+            "null"
+          ],
+          "mergeStrategy": "ocdsVersion"
+        },
+        "maxValue": {
+          "description": "Used to state the upper bound of the requirement when the response must be within a certain range",
+          "type": [
+            "integer",
+            "number",
+            "null"
+          ],
+          "mergeStrategy": "ocdsVersion"
+        },
+        "period": {
+          "description": "Used to specify a particular period the requirement applies to, for example the bidder's turnover in a given year",
+          "%ref": "#/definitions/Period"
+        }
+      }
+    },
+    "Tender": {
+      "properties": {
+        "criteria": {
+          "$ref": "#/definitions/Criterion"
+        }
+      }
+    }
+  }
+}

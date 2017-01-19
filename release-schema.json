@@ -1,10 +1,5 @@
 {
   "id": "http://standard.open-contracting.org/schema/1__0__1/release-schema.json",
-  "properties": {
-    "tag": {
-      "description": "A value from the [releaseTag codelist](http://standard.open-contracting.org/latest/en/schema/codelists/#release-tag) that identifies the nature of the release being made. Tags may be used to filter release, or, in future, for for advanced validation when certain kinds of releases should contain certain fields."
-    }
-  },
   "definitions": {
     "Criterion": {
       "type": "object",
@@ -197,7 +192,7 @@
         },
         "period": {
           "description": "Used to specify a particular period the requirement applies to, for example the bidder's turnover in a given year",
-          "%ref": "#/definitions/Period"
+          "$ref": "#/definitions/Period"
         }
       }
     },
@@ -243,7 +238,7 @@
         },
         "period": {
           "description": "The period which the requirement response is applicable to",
-          "%ref": "#/definitions/Period"
+          "$ref": "#/definitions/Period"
         },
         "requirement": {
           "description": "The id of the requirement which the response is applicable to",

@@ -141,7 +141,7 @@
           "mergeStrategy": "ocdsVersion"
         },
         "dataType": {
-          "description": "Requirement description",
+          "description": "The data type which must be provided in the requirement response.",
           "type": [
             "string",
             "null"

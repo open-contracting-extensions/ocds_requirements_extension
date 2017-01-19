@@ -1,1 +1,696 @@
-{"definitions":{"Criterion":{"type":"object","title":"Criterion","description":"A criterion on which either bidders or items will be judged, evaluated or assessed.","required":["id"],"properties":{"id":{"description":"The identifier for this criterion. It must be unique and cannot change within the Open Contracting Process it is part of (defined by a single ocid). See the [identifier guidance](http://standard.open-contracting.org/latest/en/schema/identifiers/) for further details.","type":["string","integer"],"mergeStrategy":"overwrite"},"title":{"description":"Criterion title","type":["string","null"],"mergeStrategy":"ocdsVersion"},"description":{"description":"Criterion description","type":["string","null"],"mergeStrategy":"ocdsVersion"},"source":{"description":"Source of response to the requirements specificed in the criterion, for example responses may be submitted by tenderers or by an assessment committee at the procuringEntity.","type":"string","enum":["tenderer","buyer","procuringEntity"],"mergeStrategy":"ocdsVersion"},"relatesTo":{"description":"The schema element that the criterion judges, evaluates or assesses. For example criterion may be defined against items or against bidders.","type":"string","enum":["item","tenderer"],"mergeStrategy":"ocdsVersion"},"relatedItem":{"description":"Where relatesTo = \"item\" this field must be populated with the id of the item the criterion relates to. Where relatesTo <> \"item\" this field should be omitted","type":["string","null"],"mergeStrategy":"ocdsVersion"},"requirementGroups":{"title":"Requirement groups","description":"A list of requirement groups for this Criterion. A criterion is satisfied by one or more requirement groups being met. A requirement group is met when all requirements in the group are satisfied.","type":"array","mergeStrategy":"arrayMergeById","mergeOptions":{"idRef":"id"},"items":{"$ref":"#/definitions/RequirementGroup"},"uniqueItems":true}}},"RequirementGroup":{"type":"object","title":"Requirement group","description":"A requirement group is a set of requirements that must be fulfilled together to validate a criterion.","required":["id"],"properties":{"id":{"description":"The identifier for this requirement group. It must be unique and cannot change within the Open Contracting Process it is part of (defined by a single ocid). See the [identifier guidance](http://standard.open-contracting.org/latest/en/schema/identifiers/) for further details.","type":"string","mergeStrategy":"overwrite"},"description":{"description":"Requirement group description","type":["string","null"],"mergeStrategy":"ocdsVersion"},"requirements":{"$ref":"#/definitions/Requirement"}}},"Requirement":{"type":"object","title":"Requirement","description":"An atomic requirement. Requirements can specify the expected value that the response has to contain, or a range of threshold values within which the response has to fit in. The requirement may apply to a certain period of time","required":["id"],"properties":{"id":{"description":"The identifier for this requirement. It must be unique and cannot change within the Open Contracting Process it is part of (defined by a single ocid). See the [identifier guidance](http://standard.open-contracting.org/latest/en/schema/identifiers/) for further details.","type":"string","mergeStrategy":"overwrite"},"title":{"description":"Requirement title","type":["string","null"],"mergeStrategy":"ocdsVersion"},"description":{"description":"Requirement description","type":["string","null"],"mergeStrategy":"ocdsVersion"},"dataType":{"description":"Requirement description","type":["string","null"],"enum":["string","date-time","number","integer"],"mergeStrategy":"ocdsVersion"},"pattern":{"description":"A regular expression against which validate the requirement response","type":["string","null"],"mergeStrategy":"ocdsVersion"},"expectedValue":{"description":"Used to state the requirement when the response must be particular value","type":["string","integer","number","null"],"mergeStrategy":"ocdsVersion"},"minValue":{"description":"Used to state the lower bound of the requirement when the response must be within a certain range","type":["integer","number","null"],"mergeStrategy":"ocdsVersion"},"maxValue":{"description":"Used to state the upper bound of the requirement when the response must be within a certain range","type":["integer","number","null"],"mergeStrategy":"ocdsVersion"},"period":{"description":"Used to specify a particular period the requirement applies to, for example the bidder's turnover in a given year","%ref":"#/definitions/Period"}}},"RequirementResponse":{"type":"object","title":"Requirement Response","description":"An assertion that responds to a single requirement. A requirement response provides the value for the requirement and may provide the period to which it applies.","required":["id","requirement"],"properties":{"id":{"description":"The identifier for this requirement response. It must be unique and cannot change within the Open Contracting Process it is part of (defined by a single ocid). See the [identifier guidance](http://standard.open-contracting.org/latest/en/schema/identifiers/) for further details.","type":"string","mergeStrategy":"overwrite"},"title":{"description":"Requirement response title","type":["string","null"],"mergeStrategy":"ocdsVersion"},"description":{"description":"Requirement response description","type":["string","null"],"mergeStrategy":"ocdsVersion"},"value":{"description":"Requirement response value. The value must be of the type defined in the requirement.dataType field","type":["string","integer","number","null"],"mergeStrategy":"ocdsVersion"},"period":{"description":"The period which the requirement response is applicable to","%ref":"#/definitions/Period"},"requirement":{"description":"The id of the requirement which the response is applicable to","type":"string","mergeStrategy":"ocdsVersion"}}},"Tender":{"properties":{"criteria":{"$ref":"#/definitions/Criterion"}}},"Award":{"properties":{"requirementResponses":{"type":"array","mergeStrategy":"arrayMergeById","mergeOptions":{"idRef":"id"},"items":{"$ref":"#/definitions/RequirementResponse"},"unqiueItems":true}}},"Contract":{"properties":{"requirementResponses":{"type":"array","mergeStrategy":"arrayMergeById","mergeOptions":{"idRef":"id"},"items":{"$ref":"#/definitions/RequirementResponse"},"unqiueItems":true}}}}}
+{
+  "id": "http://standard.open-contracting.org/schema/1__0__1/release-schema.json",
+  "properties": {
+    "tag": {
+      "description": "A value from the [releaseTag codelist](http://standard.open-contracting.org/latest/en/schema/codelists/#release-tag) that identifies the nature of the release being made. Tags may be used to filter release, or, in future, for for advanced validation when certain kinds of releases should contain certain fields."
+    }
+  },
+  "definitions": {
+    "Criterion": {
+      "type": "object",
+      "title": "Criterion",
+      "description": "A criterion on which either bidders or items will be judged, evaluated or assessed.",
+      "required": [
+        "id"
+      ],
+      "properties": {
+        "id": {
+          "description": "The identifier for this criterion. It must be unique and cannot change within the Open Contracting Process it is part of (defined by a single ocid). See the [identifier guidance](http://standard.open-contracting.org/latest/en/schema/identifiers/) for further details.",
+          "type": [
+            "string",
+            "integer"
+          ],
+          "mergeStrategy": "overwrite"
+        },
+        "title": {
+          "description": "Criterion title",
+          "type": [
+            "string",
+            "null"
+          ],
+          "mergeStrategy": "ocdsVersion"
+        },
+        "description": {
+          "description": "Criterion description",
+          "type": [
+            "string",
+            "null"
+          ],
+          "mergeStrategy": "ocdsVersion"
+        },
+        "source": {
+          "description": "Source of response to the requirements specificed in the criterion, for example responses may be submitted by tenderers or by an assessment committee at the procuringEntity.",
+          "type": "string",
+          "enum": [
+            "tenderer",
+            "buyer",
+            "procuringEntity"
+          ],
+          "mergeStrategy": "ocdsVersion"
+        },
+        "relatesTo": {
+          "description": "The schema element that the criterion judges, evaluates or assesses. For example criterion may be defined against items or against bidders.",
+          "type": "string",
+          "enum": [
+            "item",
+            "tenderer"
+          ],
+          "mergeStrategy": "ocdsVersion"
+        },
+        "relatedItem": {
+          "description": "Where relatesTo = \"item\" this field must be populated with the id of the item the criterion relates to. Where relatesTo <> \"item\" this field should be omitted",
+          "type": [
+            "string",
+            "null"
+          ],
+          "mergeStrategy": "ocdsVersion"
+        },
+        "requirementGroups": {
+          "title": "Requirement groups",
+          "description": "A list of requirement groups for this Criterion. A criterion is satisfied by one or more requirement groups being met. A requirement group is met when all requirements in the group are satisfied.",
+          "type": "array",
+          "mergeStrategy": "arrayMergeById",
+          "mergeOptions": {
+            "idRef": "id"
+          },
+          "items": {
+            "$ref": "#/definitions/RequirementGroup"
+          },
+          "uniqueItems": true
+        }
+      }
+    },
+    "RequirementGroup": {
+      "type": "object",
+      "title": "Requirement group",
+      "description": "A requirement group is a set of requirements that must be fulfilled together to validate a criterion.",
+      "required": [
+        "id"
+      ],
+      "properties": {
+        "id": {
+          "description": "The identifier for this requirement group. It must be unique and cannot change within the Open Contracting Process it is part of (defined by a single ocid). See the [identifier guidance](http://standard.open-contracting.org/latest/en/schema/identifiers/) for further details.",
+          "type": "string",
+          "mergeStrategy": "overwrite"
+        },
+        "description": {
+          "description": "Requirement group description",
+          "type": [
+            "string",
+            "null"
+          ],
+          "mergeStrategy": "ocdsVersion"
+        },
+        "requirements": {
+          "title": "Requirements",
+          "description": "A list requirements which must all be satisified for the requirement group to be met.",
+          "type": "array",
+          "mergeStrategy": "arrayMergeById",
+          "mergeOptions": {
+            "idRef": "id"
+          },
+          "items": {
+            "$ref": "#/definitions/Requirement"
+          },
+          "uniqueItems": true
+        }
+      }
+    },
+    "Requirement": {
+      "type": "object",
+      "title": "Requirement",
+      "description": "An atomic requirement. Requirements can specify the expected value that the response has to contain, or a range of threshold values within which the response has to fit in. The requirement may apply to a certain period of time",
+      "required": [
+        "id"
+      ],
+      "properties": {
+        "id": {
+          "description": "The identifier for this requirement. It must be unique and cannot change within the Open Contracting Process it is part of (defined by a single ocid). See the [identifier guidance](http://standard.open-contracting.org/latest/en/schema/identifiers/) for further details.",
+          "type": "string",
+          "mergeStrategy": "overwrite"
+        },
+        "title": {
+          "description": "Requirement title",
+          "type": [
+            "string",
+            "null"
+          ],
+          "mergeStrategy": "ocdsVersion"
+        },
+        "description": {
+          "description": "Requirement description",
+          "type": [
+            "string",
+            "null"
+          ],
+          "mergeStrategy": "ocdsVersion"
+        },
+        "dataType": {
+          "description": "Requirement description",
+          "type": [
+            "string",
+            "null"
+          ],
+          "enum": [
+            "string",
+            "date-time",
+            "number",
+            "integer"
+          ],
+          "mergeStrategy": "ocdsVersion"
+        },
+        "pattern": {
+          "description": "A regular expression against which validate the requirement response",
+          "type": [
+            "string",
+            "null"
+          ],
+          "mergeStrategy": "ocdsVersion"
+        },
+        "expectedValue": {
+          "description": "Used to state the requirement when the response must be particular value",
+          "type": [
+            "string",
+            "integer",
+            "number",
+            "null"
+          ],
+          "mergeStrategy": "ocdsVersion"
+        },
+        "minValue": {
+          "description": "Used to state the lower bound of the requirement when the response must be within a certain range",
+          "type": [
+            "integer",
+            "number",
+            "null"
+          ],
+          "mergeStrategy": "ocdsVersion"
+        },
+        "maxValue": {
+          "description": "Used to state the upper bound of the requirement when the response must be within a certain range",
+          "type": [
+            "integer",
+            "number",
+            "null"
+          ],
+          "mergeStrategy": "ocdsVersion"
+        },
+        "period": {
+          "description": "Used to specify a particular period the requirement applies to, for example the bidder's turnover in a given year",
+          "%ref": "#/definitions/Period"
+        }
+      }
+    },
+    "RequirementResponse": {
+      "type": "object",
+      "title": "Requirement Response",
+      "description": "An assertion that responds to a single requirement. A requirement response provides the value for the requirement and may provide the period to which it applies.",
+      "required": [
+        "id",
+        "requirement"
+      ],
+      "properties": {
+        "id": {
+          "description": "The identifier for this requirement response. It must be unique and cannot change within the Open Contracting Process it is part of (defined by a single ocid). See the [identifier guidance](http://standard.open-contracting.org/latest/en/schema/identifiers/) for further details.",
+          "type": "string",
+          "mergeStrategy": "overwrite"
+        },
+        "title": {
+          "description": "Requirement response title",
+          "type": [
+            "string",
+            "null"
+          ],
+          "mergeStrategy": "ocdsVersion"
+        },
+        "description": {
+          "description": "Requirement response description",
+          "type": [
+            "string",
+            "null"
+          ],
+          "mergeStrategy": "ocdsVersion"
+        },
+        "value": {
+          "description": "Requirement response value. The value must be of the type defined in the requirement.dataType field",
+          "type": [
+            "string",
+            "integer",
+            "number",
+            "null"
+          ],
+          "mergeStrategy": "ocdsVersion"
+        },
+        "period": {
+          "description": "The period which the requirement response is applicable to",
+          "%ref": "#/definitions/Period"
+        },
+        "requirement": {
+          "description": "The id of the requirement which the response is applicable to",
+          "type": "string",
+          "mergeStrategy": "ocdsVersion"
+        }
+      }
+    },
+    "Planning": {
+      "properties": {
+        "rationale": {
+          "title": null
+        },
+        "documents": {
+          "title": null
+        }
+      }
+    },
+    "Tender": {
+      "properties": {
+        "criteria": {
+          "description": "A list of criteria on which either bidders or items will be judged, evaluated or assessed.",
+          "type": "array",
+          "mergeStrategy": "arrayMergeById",
+          "mergeOptions": {
+            "idRef": "id"
+          },
+          "items": {
+            "$ref": "#/definitions/Criterion"
+          }
+        },
+        "title": {
+          "title": null
+        },
+        "description": {
+          "title": null
+        },
+        "status": {
+          "title": "Tender Status"
+        },
+        "minValue": {
+          "title": null
+        },
+        "value": {
+          "title": null
+        },
+        "procurementMethod": {
+          "title": null
+        },
+        "procurementMethodDetails": null,
+        "procurementMethodRationale": {
+          "title": null
+        },
+        "awardCriteria": {
+          "title": null
+        },
+        "awardCriteriaDetails": {
+          "title": null
+        },
+        "submissionMethod": {
+          "title": null
+        },
+        "submissionMethodDetails": {
+          "title": null
+        },
+        "tenderPeriod": {
+          "title": null
+        },
+        "enquiryPeriod": {
+          "title": null
+        },
+        "hasEnquiries": {
+          "title": null
+        },
+        "eligibilityCriteria": {
+          "title": null
+        },
+        "awardPeriod": {
+          "title": null
+        },
+        "numberOfTenderers": {
+          "definition": "The number of entities who submit a tender.",
+          "title": null,
+          "description": null
+        },
+        "tenderers": {
+          "title": null
+        },
+        "procuringEntity": {
+          "title": null
+        },
+        "documents": {
+          "title": null
+        },
+        "milestones": {
+          "title": null
+        }
+      }
+    },
+    "Award": {
+      "properties": {
+        "requirementResponses": {
+          "type": "array",
+          "mergeStrategy": "arrayMergeById",
+          "mergeOptions": {
+            "idRef": "id"
+          },
+          "items": {
+            "$ref": "#/definitions/RequirementResponse"
+          },
+          "unqiueItems": true
+        },
+        "title": {
+          "title": null
+        },
+        "description": {
+          "title": null
+        },
+        "status": {
+          "title": "Award Status"
+        },
+        "value": {
+          "title": null
+        },
+        "suppliers": {
+          "title": null
+        },
+        "items": {
+          "title": "Items Awarded"
+        },
+        "contractPeriod": {
+          "title": null
+        },
+        "documents": {
+          "title": null
+        }
+      }
+    },
+    "Contract": {
+      "properties": {
+        "requirementResponses": {
+          "type": "array",
+          "mergeStrategy": "arrayMergeById",
+          "mergeOptions": {
+            "idRef": "id"
+          },
+          "items": {
+            "$ref": "#/definitions/RequirementResponse"
+          },
+          "unqiueItems": true
+        },
+        "description": {
+          "title": null
+        },
+        "status": {
+          "title": "Contract Status"
+        },
+        "period": {
+          "title": null
+        },
+        "value": {
+          "title": null
+        },
+        "items": {
+          "title": "Items Contracted"
+        },
+        "dateSigned": {
+          "title": null
+        },
+        "documents": {
+          "title": null
+        }
+      }
+    },
+    "Implementation": {
+      "properties": {
+        "transactions": {
+          "title": null
+        },
+        "milestones": {
+          "title": null
+        },
+        "documents": {
+          "title": null
+        }
+      }
+    },
+    "Milestone": {
+      "title": null,
+      "properties": {
+        "id": {
+          "title": null
+        },
+        "title": {
+          "title": null
+        },
+        "description": {
+          "title": null
+        },
+        "dueDate": {
+          "title": null
+        },
+        "dateModified": {
+          "title": null
+        },
+        "status": {
+          "title": null
+        },
+        "documents": {
+          "title": null
+        }
+      }
+    },
+    "Document": {
+      "properties": {
+        "id": {
+          "title": null
+        },
+        "documentType": {
+          "title": null
+        },
+        "title": {
+          "title": null
+        },
+        "description": {
+          "title": null
+        },
+        "url": {
+          "title": null
+        },
+        "datePublished": {
+          "title": null
+        },
+        "dateModified": {
+          "title": null
+        },
+        "format": {
+          "title": null
+        },
+        "language": {
+          "title": null
+        }
+      }
+    },
+    "Budget": {
+      "title": "Budget Information",
+      "description": "This section contain information about the budget line, and associated projects, through which this contracting process is funded. It draws upon data model of the [Budget Data Package](https://github.com/openspending/budget-data-package/blob/master/specification.md), and should be used to cross-reference to more detailed information held using a Budget Data Package, or, where no linked Budget Data Package is available, to provide enough information to allow a user to manually or automatically cross-reference with another published source of budget and project information.",
+      "properties": {
+        "id": {
+          "title": null
+        },
+        "amount": {
+          "title": null
+        },
+        "project": {
+          "title": "Project Title"
+        },
+        "projectID": {
+          "title": "Project Identifier"
+        }
+      }
+    },
+    "Transaction": {
+      "title": "Transaction Information",
+      "description": "A spending transaction related to the contracting process. Draws upon the data models of the [Budget Data Package](https://github.com/openspending/budget-data-package/blob/master/specification.md) and the [International Aid Transpareny Initiative](http://iatistandard.org/activity-standard/iati-activities/iati-activity/transaction/) and should be used to cross-reference to more detailed information held using a Budget Data Package, IATI file, or to provide enough information to allow a user to manually or automatically cross-reference with some other published source of transactional spending data.",
+      "properties": {
+        "id": {
+          "title": null
+        },
+        "source": {
+          "title": "Data Source"
+        },
+        "date": {
+          "title": null
+        },
+        "amount": {
+          "title": null
+        },
+        "providerOrganization": {
+          "title": null
+        },
+        "receiverOrganization": {
+          "title": null
+        }
+      }
+    },
+    "Organization": {
+      "properties": {
+        "identifier": {
+          "title": null
+        },
+        "additionalIdentifiers": {
+          "title": null
+        },
+        "name": {
+          "title": null
+        }
+      }
+    },
+    "Item": {
+      "title": null,
+      "properties": {
+        "id": {
+          "title": null
+        },
+        "description": {
+          "title": null
+        },
+        "classification": {
+          "title": null
+        },
+        "additionalClassifications": {
+          "title": null
+        },
+        "quantity": {
+          "title": null
+        },
+        "unit": {
+          "title": null,
+          "properties": {
+            "name": {
+              "title": null
+            },
+            "value": {
+              "title": null
+            }
+          }
+        }
+      }
+    },
+    "Amendment": {
+      "properties": {
+        "date": {
+          "title": "Amendment Date"
+        },
+        "changes": {
+          "description": "Comma-seperated list of affected fields.",
+          "items": {
+            "properties": {
+              "property": {
+                "title": null
+              },
+              "former_value": {
+                "title": null
+              }
+            }
+          }
+        },
+        "rationale": {
+          "title": null
+        }
+      }
+    },
+    "Classification": {
+      "title": null,
+      "properties": {
+        "scheme": {
+          "title": null
+        },
+        "id": {
+          "title": null
+        },
+        "description": {
+          "title": null
+        },
+        "uri": {
+          "title": null
+        }
+      }
+    },
+    "Identifier": {
+      "title": null,
+      "properties": {
+        "scheme": {
+          "title": null
+        },
+        "id": {
+          "title": null
+        },
+        "legalName": {
+          "title": null
+        },
+        "uri": {
+          "title": null
+        }
+      }
+    },
+    "Address": {
+      "title": null,
+      "properties": {
+        "streetAddress": {
+          "title": null
+        },
+        "locality": {
+          "title": null
+        },
+        "region": {
+          "title": null
+        },
+        "postalCode": {
+          "title": null
+        },
+        "countryName": {
+          "title": null
+        }
+      }
+    },
+    "ContactPoint": {
+      "title": null,
+      "properties": {
+        "name": {
+          "title": null
+        },
+        "email": {
+          "title": null
+        },
+        "telephone": {
+          "title": null
+        },
+        "faxNumber": {
+          "title": null
+        },
+        "url": {
+          "title": null
+        }
+      }
+    },
+    "Value": {
+      "title": null,
+      "properties": {
+        "amount": {
+          "title": null
+        },
+        "currency": {
+          "title": null
+        }
+      }
+    },
+    "Period": {
+      "properties": {
+        "startDate": {
+          "title": null
+        },
+        "endDate": {
+          "title": null
+        }
+      }
+    }
+  }
+}

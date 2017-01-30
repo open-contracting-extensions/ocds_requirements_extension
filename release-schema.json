@@ -1,5 +1,4 @@
 {
-  "id": "http://standard.open-contracting.org/schema/1__0__1/release-schema.json",
   "definitions": {
     "Criterion": {
       "type": "object",
@@ -53,7 +52,7 @@
           "mergeStrategy": "ocdsVersion"
         },
         "relatedItem": {
-          "description": "Where relatesTo = \"item\" this field must be populated with the id of the item the criterion relates to. Where relatesTo <> \"item\" this field should be omitted",
+          "description": "Where relatesTo = \"item\" this field must be populated with the id of the item in this tender section which the criterion relates to. Where relatesTo <> \"item\" this field should be omitted",
           "type": [
             "string",
             "null"
@@ -141,7 +140,7 @@
           "mergeStrategy": "ocdsVersion"
         },
         "dataType": {
-          "description": "The data type which must be provided in the requirement response.",
+          "description": "Requirement description",
           "type": [
             "string",
             "null"
@@ -244,16 +243,48 @@
           "description": "The id of the requirement which the response is applicable to",
           "type": "string",
           "mergeStrategy": "ocdsVersion"
+        },
+        "relatedTenderer": {
+          "title": "Related tenderer",
+          "description": "Where this requirement response relates to a tenderer and is provided by the buyer or procuring entity this field should be used to reference the entry in the parties section for the tenderer the response relates to.",
+          "$ref": "#/definitions/OrganizationReference"
         }
       }
     },
-    "Planning": {
+    "RequirementReference": {
+      "type": "object",
+      "title": "Requirement reference",
+      "description": "Used to cross reference a requirement",
+      "required": [
+        "id"
+      ],
       "properties": {
-        "rationale": {
-          "title": null
+        "id": {
+          "title": "Requirement ID",
+          "description": "The id of the requirement which the response is applicable to",
+          "type": "string",
+          "mergeStrategy": "ocdsVersion"
         },
-        "documents": {
-          "title": null
+        "title": {
+          "title": "Requirement title",
+          "description": "The title of the requirement which the response is applicable to",
+          "type": "string",
+          "mergeStrategy": "ocdsVersion"
+        }
+      }
+    },
+    "Bid": {
+      "properties": {
+        "requirementResponses": {
+          "type": "array",
+          "mergeStrategy": "arrayMergeById",
+          "mergeOptions": {
+            "idRef": "id"
+          },
+          "items": {
+            "$ref": "#/definitions/RequirementResponse"
+          },
+          "unqiueItems": true
         }
       }
     },
@@ -269,72 +300,6 @@
           "items": {
             "$ref": "#/definitions/Criterion"
           }
-        },
-        "title": {
-          "title": null
-        },
-        "description": {
-          "title": null
-        },
-        "status": {
-          "title": "Tender Status"
-        },
-        "minValue": {
-          "title": null
-        },
-        "value": {
-          "title": null
-        },
-        "procurementMethod": {
-          "title": null
-        },
-        "procurementMethodDetails": null,
-        "procurementMethodRationale": {
-          "title": null
-        },
-        "awardCriteria": {
-          "title": null
-        },
-        "awardCriteriaDetails": {
-          "title": null
-        },
-        "submissionMethod": {
-          "title": null
-        },
-        "submissionMethodDetails": {
-          "title": null
-        },
-        "tenderPeriod": {
-          "title": null
-        },
-        "enquiryPeriod": {
-          "title": null
-        },
-        "hasEnquiries": {
-          "title": null
-        },
-        "eligibilityCriteria": {
-          "title": null
-        },
-        "awardPeriod": {
-          "title": null
-        },
-        "numberOfTenderers": {
-          "definition": "The number of entities who submit a tender.",
-          "title": null,
-          "description": null
-        },
-        "tenderers": {
-          "title": null
-        },
-        "procuringEntity": {
-          "title": null
-        },
-        "documents": {
-          "title": null
-        },
-        "milestones": {
-          "title": null
         }
       }
     },
@@ -350,30 +315,6 @@
             "$ref": "#/definitions/RequirementResponse"
           },
           "unqiueItems": true
-        },
-        "title": {
-          "title": null
-        },
-        "description": {
-          "title": null
-        },
-        "status": {
-          "title": "Award Status"
-        },
-        "value": {
-          "title": null
-        },
-        "suppliers": {
-          "title": null
-        },
-        "items": {
-          "title": "Items Awarded"
-        },
-        "contractPeriod": {
-          "title": null
-        },
-        "documents": {
-          "title": null
         }
       }
     },
@@ -389,301 +330,6 @@
             "$ref": "#/definitions/RequirementResponse"
           },
           "unqiueItems": true
-        },
-        "description": {
-          "title": null
-        },
-        "status": {
-          "title": "Contract Status"
-        },
-        "period": {
-          "title": null
-        },
-        "value": {
-          "title": null
-        },
-        "items": {
-          "title": "Items Contracted"
-        },
-        "dateSigned": {
-          "title": null
-        },
-        "documents": {
-          "title": null
-        }
-      }
-    },
-    "Implementation": {
-      "properties": {
-        "transactions": {
-          "title": null
-        },
-        "milestones": {
-          "title": null
-        },
-        "documents": {
-          "title": null
-        }
-      }
-    },
-    "Milestone": {
-      "title": null,
-      "properties": {
-        "id": {
-          "title": null
-        },
-        "title": {
-          "title": null
-        },
-        "description": {
-          "title": null
-        },
-        "dueDate": {
-          "title": null
-        },
-        "dateModified": {
-          "title": null
-        },
-        "status": {
-          "title": null
-        },
-        "documents": {
-          "title": null
-        }
-      }
-    },
-    "Document": {
-      "properties": {
-        "id": {
-          "title": null
-        },
-        "documentType": {
-          "title": null
-        },
-        "title": {
-          "title": null
-        },
-        "description": {
-          "title": null
-        },
-        "url": {
-          "title": null
-        },
-        "datePublished": {
-          "title": null
-        },
-        "dateModified": {
-          "title": null
-        },
-        "format": {
-          "title": null
-        },
-        "language": {
-          "title": null
-        }
-      }
-    },
-    "Budget": {
-      "title": "Budget Information",
-      "description": "This section contain information about the budget line, and associated projects, through which this contracting process is funded. It draws upon data model of the [Budget Data Package](https://github.com/openspending/budget-data-package/blob/master/specification.md), and should be used to cross-reference to more detailed information held using a Budget Data Package, or, where no linked Budget Data Package is available, to provide enough information to allow a user to manually or automatically cross-reference with another published source of budget and project information.",
-      "properties": {
-        "id": {
-          "title": null
-        },
-        "amount": {
-          "title": null
-        },
-        "project": {
-          "title": "Project Title"
-        },
-        "projectID": {
-          "title": "Project Identifier"
-        }
-      }
-    },
-    "Transaction": {
-      "title": "Transaction Information",
-      "description": "A spending transaction related to the contracting process. Draws upon the data models of the [Budget Data Package](https://github.com/openspending/budget-data-package/blob/master/specification.md) and the [International Aid Transpareny Initiative](http://iatistandard.org/activity-standard/iati-activities/iati-activity/transaction/) and should be used to cross-reference to more detailed information held using a Budget Data Package, IATI file, or to provide enough information to allow a user to manually or automatically cross-reference with some other published source of transactional spending data.",
-      "properties": {
-        "id": {
-          "title": null
-        },
-        "source": {
-          "title": "Data Source"
-        },
-        "date": {
-          "title": null
-        },
-        "amount": {
-          "title": null
-        },
-        "providerOrganization": {
-          "title": null
-        },
-        "receiverOrganization": {
-          "title": null
-        }
-      }
-    },
-    "Organization": {
-      "properties": {
-        "identifier": {
-          "title": null
-        },
-        "additionalIdentifiers": {
-          "title": null
-        },
-        "name": {
-          "title": null
-        }
-      }
-    },
-    "Item": {
-      "title": null,
-      "properties": {
-        "id": {
-          "title": null
-        },
-        "description": {
-          "title": null
-        },
-        "classification": {
-          "title": null
-        },
-        "additionalClassifications": {
-          "title": null
-        },
-        "quantity": {
-          "title": null
-        },
-        "unit": {
-          "title": null,
-          "properties": {
-            "name": {
-              "title": null
-            },
-            "value": {
-              "title": null
-            }
-          }
-        }
-      }
-    },
-    "Amendment": {
-      "properties": {
-        "date": {
-          "title": "Amendment Date"
-        },
-        "changes": {
-          "description": "Comma-seperated list of affected fields.",
-          "items": {
-            "properties": {
-              "property": {
-                "title": null
-              },
-              "former_value": {
-                "title": null
-              }
-            }
-          }
-        },
-        "rationale": {
-          "title": null
-        }
-      }
-    },
-    "Classification": {
-      "title": null,
-      "properties": {
-        "scheme": {
-          "title": null
-        },
-        "id": {
-          "title": null
-        },
-        "description": {
-          "title": null
-        },
-        "uri": {
-          "title": null
-        }
-      }
-    },
-    "Identifier": {
-      "title": null,
-      "properties": {
-        "scheme": {
-          "title": null
-        },
-        "id": {
-          "title": null
-        },
-        "legalName": {
-          "title": null
-        },
-        "uri": {
-          "title": null
-        }
-      }
-    },
-    "Address": {
-      "title": null,
-      "properties": {
-        "streetAddress": {
-          "title": null
-        },
-        "locality": {
-          "title": null
-        },
-        "region": {
-          "title": null
-        },
-        "postalCode": {
-          "title": null
-        },
-        "countryName": {
-          "title": null
-        }
-      }
-    },
-    "ContactPoint": {
-      "title": null,
-      "properties": {
-        "name": {
-          "title": null
-        },
-        "email": {
-          "title": null
-        },
-        "telephone": {
-          "title": null
-        },
-        "faxNumber": {
-          "title": null
-        },
-        "url": {
-          "title": null
-        }
-      }
-    },
-    "Value": {
-      "title": null,
-      "properties": {
-        "amount": {
-          "title": null
-        },
-        "currency": {
-          "title": null
-        }
-      }
-    },
-    "Period": {
-      "properties": {
-        "startDate": {
-          "title": null
-        },
-        "endDate": {
-          "title": null
         }
       }
     }

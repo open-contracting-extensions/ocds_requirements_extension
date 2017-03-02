@@ -241,6 +241,7 @@
         },
         "requirement": {
           "title": "Related requirement",
+		  "description": "The id and title of the requirement which the response is applicable to",
           "$ref": "#/definitions/RequirementReference"
         },
         "relatedTenderer": {

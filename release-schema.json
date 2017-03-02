@@ -240,9 +240,8 @@
           "$ref": "#/definitions/Period"
         },
         "requirement": {
-          "description": "The id of the requirement which the response is applicable to",
-          "type": "string",
-          "mergeStrategy": "ocdsVersion"
+          "title": "Related requirement",
+          "$ref": "#/definitions/RequirementReference"
         },
         "relatedTenderer": {
           "title": "Related tenderer",

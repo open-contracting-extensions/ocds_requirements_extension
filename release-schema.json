@@ -13,24 +13,21 @@
           "type": [
             "string",
             "integer"
-          ],
-          "mergeStrategy": "overwrite"
+          ]
         },
         "title": {
           "description": "Criterion title",
           "type": [
             "string",
             "null"
-          ],
-          "mergeStrategy": "ocdsVersion"
+          ]
         },
         "description": {
           "description": "Criterion description",
           "type": [
             "string",
             "null"
-          ],
-          "mergeStrategy": "ocdsVersion"
+          ]
         },
         "source": {
           "description": "Source of response to the requirements specificed in the criterion, for example responses may be submitted by tenderers or by an assessment committee at the procuringEntity.",
@@ -39,8 +36,7 @@
             "tenderer",
             "buyer",
             "procuringEntity"
-          ],
-          "mergeStrategy": "ocdsVersion"
+          ]
         },
         "relatesTo": {
           "description": "The schema element that the criterion judges, evaluates or assesses. For example criterion may be defined against items or against bidders.",
@@ -48,25 +44,19 @@
           "enum": [
             "item",
             "tenderer"
-          ],
-          "mergeStrategy": "ocdsVersion"
+          ]
         },
         "relatedItem": {
           "description": "Where relatesTo = \"item\" this field must be populated with the id of the item in this tender section which the criterion relates to. Where relatesTo <> \"item\" this field should be omitted",
           "type": [
             "string",
             "null"
-          ],
-          "mergeStrategy": "ocdsVersion"
+          ]
         },
         "requirementGroups": {
           "title": "Requirement groups",
           "description": "A list of requirement groups for this Criterion. A criterion is satisfied by one or more requirement groups being met. A requirement group is met when all requirements in the group are satisfied.",
           "type": "array",
-          "mergeStrategy": "arrayMergeById",
-          "mergeOptions": {
-            "idRef": "id"
-          },
           "items": {
             "$ref": "#/definitions/RequirementGroup"
           },
@@ -84,25 +74,19 @@
       "properties": {
         "id": {
           "description": "The identifier for this requirement group. It must be unique and cannot change within the Open Contracting Process it is part of (defined by a single ocid). See the [identifier guidance](http://standard.open-contracting.org/latest/en/schema/identifiers/) for further details.",
-          "type": "string",
-          "mergeStrategy": "overwrite"
+          "type": "string"
         },
         "description": {
           "description": "Requirement group description",
           "type": [
             "string",
             "null"
-          ],
-          "mergeStrategy": "ocdsVersion"
+          ]
         },
         "requirements": {
           "title": "Requirements",
           "description": "A list requirements which must all be satisified for the requirement group to be met.",
           "type": "array",
-          "mergeStrategy": "arrayMergeById",
-          "mergeOptions": {
-            "idRef": "id"
-          },
           "items": {
             "$ref": "#/definitions/Requirement"
           },
@@ -120,24 +104,21 @@
       "properties": {
         "id": {
           "description": "The identifier for this requirement. It must be unique and cannot change within the Open Contracting Process it is part of (defined by a single ocid). See the [identifier guidance](http://standard.open-contracting.org/latest/en/schema/identifiers/) for further details.",
-          "type": "string",
-          "mergeStrategy": "overwrite"
+          "type": "string"
         },
         "title": {
           "description": "Requirement title",
           "type": [
             "string",
             "null"
-          ],
-          "mergeStrategy": "ocdsVersion"
+          ]
         },
         "description": {
           "description": "Requirement description",
           "type": [
             "string",
             "null"
-          ],
-          "mergeStrategy": "ocdsVersion"
+          ]
         },
         "dataType": {
           "description": "Requirement description",
@@ -150,16 +131,14 @@
             "date-time",
             "number",
             "integer"
-          ],
-          "mergeStrategy": "ocdsVersion"
+          ]
         },
         "pattern": {
           "description": "A regular expression against which validate the requirement response",
           "type": [
             "string",
             "null"
-          ],
-          "mergeStrategy": "ocdsVersion"
+          ]
         },
         "expectedValue": {
           "description": "Used to state the requirement when the response must be particular value",
@@ -168,8 +147,7 @@
             "integer",
             "number",
             "null"
-          ],
-          "mergeStrategy": "ocdsVersion"
+          ]
         },
         "minValue": {
           "description": "Used to state the lower bound of the requirement when the response must be within a certain range",
@@ -177,8 +155,7 @@
             "integer",
             "number",
             "null"
-          ],
-          "mergeStrategy": "ocdsVersion"
+          ]
         },
         "maxValue": {
           "description": "Used to state the upper bound of the requirement when the response must be within a certain range",
@@ -186,8 +163,7 @@
             "integer",
             "number",
             "null"
-          ],
-          "mergeStrategy": "ocdsVersion"
+          ]
         },
         "period": {
           "description": "Used to specify a particular period the requirement applies to, for example the bidder's turnover in a given year",
@@ -206,24 +182,21 @@
       "properties": {
         "id": {
           "description": "The identifier for this requirement response. It must be unique and cannot change within the Open Contracting Process it is part of (defined by a single ocid). See the [identifier guidance](http://standard.open-contracting.org/latest/en/schema/identifiers/) for further details.",
-          "type": "string",
-          "mergeStrategy": "overwrite"
+          "type": "string"
         },
         "title": {
           "description": "Requirement response title",
           "type": [
             "string",
             "null"
-          ],
-          "mergeStrategy": "ocdsVersion"
+          ]
         },
         "description": {
           "description": "Requirement response description",
           "type": [
             "string",
             "null"
-          ],
-          "mergeStrategy": "ocdsVersion"
+          ]
         },
         "value": {
           "description": "Requirement response value. The value must be of the type defined in the requirement.dataType field",
@@ -232,8 +205,7 @@
             "integer",
             "number",
             "null"
-          ],
-          "mergeStrategy": "ocdsVersion"
+          ]
         },
         "period": {
           "description": "The period which the requirement response is applicable to",
@@ -262,14 +234,12 @@
         "id": {
           "title": "Requirement ID",
           "description": "The id of the requirement which the response is applicable to",
-          "type": "string",
-          "mergeStrategy": "ocdsVersion"
+          "type": "string"
         },
         "title": {
           "title": "Requirement title",
           "description": "The title of the requirement which the response is applicable to",
-          "type": "string",
-          "mergeStrategy": "ocdsVersion"
+          "type": "string"
         }
       }
     },
@@ -277,10 +247,6 @@
       "properties": {
         "requirementResponses": {
           "type": "array",
-          "mergeStrategy": "arrayMergeById",
-          "mergeOptions": {
-            "idRef": "id"
-          },
           "items": {
             "$ref": "#/definitions/RequirementResponse"
           },
@@ -293,10 +259,6 @@
         "criteria": {
           "description": "A list of criteria on which either bidders or items will be judged, evaluated or assessed.",
           "type": "array",
-          "mergeStrategy": "arrayMergeById",
-          "mergeOptions": {
-            "idRef": "id"
-          },
           "items": {
             "$ref": "#/definitions/Criterion"
           }
@@ -307,10 +269,6 @@
       "properties": {
         "requirementResponses": {
           "type": "array",
-          "mergeStrategy": "arrayMergeById",
-          "mergeOptions": {
-            "idRef": "id"
-          },
           "items": {
             "$ref": "#/definitions/RequirementResponse"
           },
@@ -322,10 +280,6 @@
       "properties": {
         "requirementResponses": {
           "type": "array",
-          "mergeStrategy": "arrayMergeById",
-          "mergeOptions": {
-            "idRef": "id"
-          },
           "items": {
             "$ref": "#/definitions/RequirementResponse"
           },

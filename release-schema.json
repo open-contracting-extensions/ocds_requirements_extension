@@ -30,7 +30,7 @@
           ]
         },
         "source": {
-          "description": "Source of response to the requirements specificed in the criterion, for example responses may be submitted by tenderers or by an assessment committee at the procuringEntity.",
+          "description": "Source of response to the requirements specified in the criterion, for example responses may be submitted by tenderers or by an assessment committee at the procuringEntity.",
           "type": "string",
 		  "codelist": "responseSource.csv",
 		  "openCodelist": false
@@ -80,7 +80,7 @@
         },
         "requirements": {
           "title": "Requirements",
-          "description": "A list requirements which must all be satisified for the requirement group to be met.",
+          "description": "A list requirements which must all be satisfied for the requirement group to be met.",
           "type": "array",
           "items": {
             "$ref": "#/definitions/Requirement"
@@ -245,7 +245,7 @@
           "items": {
             "$ref": "#/definitions/RequirementResponse"
           },
-          "unqiueItems": true
+          "uniqueItems": true
         }
       }
     },
@@ -267,7 +267,7 @@
           "items": {
             "$ref": "#/definitions/RequirementResponse"
           },
-          "unqiueItems": true
+          "uniqueItems": true
         }
       }
     },
@@ -278,7 +278,7 @@
           "items": {
             "$ref": "#/definitions/RequirementResponse"
           },
-          "unqiueItems": true
+          "uniqueItems": true
         }
       }
     }

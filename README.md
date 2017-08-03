@@ -144,6 +144,7 @@ Below is an example of requirements specified against both an item and a bidder 
   ]
 }
 ````
+
 Below is an example of responses which meet the above requirements:
 
 ````json

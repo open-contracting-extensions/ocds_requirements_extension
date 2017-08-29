@@ -182,3 +182,6 @@ The extension does not describe formulae for calculated computed values.
 
 The extension does not describe whether data should be published openly or not.
 
+## Issues
+
+Report issues for this extension in the [ocds-extensions repository](https://github.com/open-contracting/ocds-extensions/issues), putting the extension's name in the issue's title.

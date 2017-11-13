@@ -1,1 +1,11 @@
-{"name":"Requirements","description":"https://github.com/open-contracting/standard/issues/223"}
+{
+  "name": {
+    "en": "Requirements"
+  },
+  "description": {
+    "en": "https://github.com/open-contracting/standard/issues/223"
+  },
+  "documentationUrl": {
+    "en": "https://github.com/open-contracting/ocds_requirements_extension"
+  }
+}

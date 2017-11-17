@@ -7,5 +7,10 @@
   },
   "documentationUrl": {
     "en": "https://github.com/open-contracting/ocds_requirements_extension"
-  }
+  },
+  "codelists": [
+    "dataType.csv",
+    "relatesTo.csv",
+    "responseSource.csv"
+  ]
 }

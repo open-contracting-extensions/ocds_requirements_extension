@@ -238,17 +238,6 @@
         }
       }
     },
-    "Bid": {
-      "properties": {
-        "requirementResponses": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/RequirementResponse"
-          },
-          "uniqueItems": true
-        }
-      }
-    },
     "Tender": {
       "properties": {
         "criteria": {

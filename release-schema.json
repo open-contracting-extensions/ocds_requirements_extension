@@ -32,14 +32,23 @@
         "source": {
           "description": "Source of response to the requirements specified in the criterion, for example responses may be submitted by tenderers or by an assessment committee at the procuringEntity.",
           "type": "string",
-		  "codelist": "responseSource.csv",
-		  "openCodelist": false
+          "codelist": "responseSource.csv",
+          "openCodelist": false,
+          "enum": [
+            "tenderer",
+            "buyer",
+            "procuringEntity"
+          ]
         },
         "relatesTo": {
           "description": "The schema element that the criterion judges, evaluates or assesses. For example criterion may be defined against items or against bidders.",
           "type": "string",
-		  "codelist": "relatesTo.csv",
-		  "openCodelist": false
+          "codelist": "relatesTo.csv",
+          "openCodelist": false,
+          "enum": [
+            "tenderer",
+            "item"
+          ]
         },
         "relatedItem": {
           "description": "Where relatesTo = \"item\" this field must be populated with the id of the item in this tender section which the criterion relates to. Where relatesTo <> \"item\" this field should be omitted",
@@ -99,12 +108,12 @@
       "properties": {
         "id": {
           "title": "Requirement identifier",
-		  "description": "The identifier for this requirement. It must be unique and cannot change within the Open Contracting Process it is part of (defined by a single ocid). See the [identifier guidance](http://standard.open-contracting.org/latest/en/schema/identifiers/) for further details.",
+          "description": "The identifier for this requirement. It must be unique and cannot change within the Open Contracting Process it is part of (defined by a single ocid). See the [identifier guidance](http://standard.open-contracting.org/latest/en/schema/identifiers/) for further details.",
           "type": "string"
         },
         "title": {
           "title": "Requirement title",
-		  "description": "The title of this atomic requirement.",
+          "description": "The title of this atomic requirement.",
           "type": [
             "string",
             "null"
@@ -112,7 +121,7 @@
         },
         "description": {
           "title": "Requirement description",
-		  "description": "A free text description for this atomic requirement.",
+          "description": "A free text description for this atomic requirement.",
           "type": [
             "string",
             "null"
@@ -120,13 +129,21 @@
         },
         "dataType": {
           "title": "Requirement datatype",
-		  "description": "The data type in which the requirement response must be provided.",
+          "description": "The data type in which the requirement response must be provided.",
           "type": [
             "string",
             "null"
           ],
-		  "codelist": "dataType.csv",
-		  "openCodelist": false
+          "codelist": "dataType.csv",
+          "openCodelist": false,
+          "enum": [
+            "string",
+            "date-time",
+            "number",
+            "integer",
+            "boolean",
+            null
+          ]
         },
         "pattern": {
           "description": "A regular expression against which validate the requirement response",
@@ -208,7 +225,7 @@
         },
         "requirement": {
           "title": "Related requirement",
-		  "description": "The id and title of the requirement which the response is applicable to",
+          "description": "The id and title of the requirement which the response is applicable to",
           "$ref": "#/definitions/RequirementReference"
         },
         "relatedTenderer": {

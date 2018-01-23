@@ -43,7 +43,7 @@ There are number of scenarios in which structured information on requirements is
 
 Below is an example of requirements specified against both an item and a bidder which demonstrates both **AND** and **OR** conditions:
 
-````json
+```json
 "tender": {
   "criteria": [
     {
@@ -143,11 +143,11 @@ Below is an example of requirements specified against both an item and a bidder 
     }
   ]
 }
-````
+```
 
 Below is an example of responses which meet the above requirements:
 
-````json
+```json
 "bids": [
   {
     "requirementResponses": [
@@ -171,7 +171,7 @@ Below is an example of responses which meet the above requirements:
     ]
   }
 ]
-````
+```
 
 ## Further extensions
 

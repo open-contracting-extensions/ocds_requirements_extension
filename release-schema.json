@@ -31,23 +31,31 @@
         },
         "source": {
           "description": "Source of response to the requirements specified in the criterion, for example responses may be submitted by tenderers or by an assessment committee at the procuringEntity.",
-          "type": "string",
+          "type": [
+            "string",
+            "null"
+          ],
           "codelist": "responseSource.csv",
           "openCodelist": false,
           "enum": [
             "tenderer",
             "buyer",
-            "procuringEntity"
+            "procuringEntity",
+            null
           ]
         },
         "relatesTo": {
           "description": "The schema element that the criterion judges, evaluates or assesses. For example criterion may be defined against items or against bidders.",
-          "type": "string",
+          "type": [
+            "string",
+            "null"
+          ],
           "codelist": "relatesTo.csv",
           "openCodelist": false,
           "enum": [
             "tenderer",
-            "item"
+            "item",
+            null
           ]
         },
         "relatedItem": {
@@ -251,7 +259,10 @@
         "title": {
           "title": "Requirement title",
           "description": "The title of the requirement which the response is applicable to",
-          "type": "string"
+          "type": [
+            "string",
+            "null"
+          ]
         }
       }
     },

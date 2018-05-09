@@ -12,5 +12,8 @@
     "dataType.csv",
     "relatesTo.csv",
     "responseSource.csv"
+  ],
+  "testDependencies": [
+    "https://raw.githubusercontent.com/open-contracting/ocds_bid_extension/master/extension.json"
   ]
 }

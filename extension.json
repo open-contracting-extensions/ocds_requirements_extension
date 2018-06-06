@@ -3,7 +3,7 @@
     "en": "Requirements"
   },
   "description": {
-    "en": "Adds a critera section to the tender object and responses sections to bids, awards and contracts to allow publishers to express criteria and responses as structured data. The requirements extension is based on the EU's Core Criterion and Core Evidence Vocabulary (CCCEV) model for communicating criteria and responses."
+    "en": "Adds a criteria section to the tender object and responses sections to bids, awards and contracts. This extension is based on the EU's Core Criterion and Core Evidence Vocabulary (CCCEV)."
   },
   "documentationUrl": {
     "en": "https://github.com/open-contracting/ocds_requirements_extension"

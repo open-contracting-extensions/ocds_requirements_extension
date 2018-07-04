@@ -8,6 +8,9 @@
   "documentationUrl": {
     "en": "https://github.com/open-contracting/ocds_requirements_extension"
   },
+  "compatibility": [
+    "1.1"
+  ],
   "codelists": [
     "dataType.csv",
     "relatesTo.csv",

@@ -16,6 +16,9 @@
     "relatesTo.csv",
     "responseSource.csv"
   ],
+  "schemas": [
+    "release-schema.json"
+  ],
   "testDependencies": [
     "https://raw.githubusercontent.com/open-contracting/ocds_bid_extension/master/extension.json"
   ]

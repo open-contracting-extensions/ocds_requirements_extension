@@ -176,6 +176,7 @@
             "string",
             "integer",
             "number",
+            "boolean",
             "null"
           ]
         },
@@ -241,6 +242,7 @@
             "string",
             "integer",
             "number",
+            "boolean",
             "null"
           ]
         },

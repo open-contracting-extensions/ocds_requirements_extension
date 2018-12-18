@@ -190,3 +190,9 @@ The extension does not describe whether data should be published openly or not.
 ## Issues
 
 Report issues for this extension in the [ocds-extensions repository](https://github.com/open-contracting/ocds-extensions/issues), putting the extension's name in the issue's title.
+
+## Changelog
+
+### Fixed
+
+* `Requirement.expectedValue` and `RequirementResponse.value` allow boolean values.

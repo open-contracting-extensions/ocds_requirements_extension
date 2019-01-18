@@ -193,6 +193,6 @@ Report issues for this extension in the [ocds-extensions repository](https://git
 
 ## Changelog
 
-### Fixed
+### 2018-12-18
 
 * `Requirement.expectedValue` and `RequirementResponse.value` allow boolean values.

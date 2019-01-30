@@ -35,11 +35,7 @@ The extension introduces a new building block for each of the concepts described
 - *awards.requirementResponses* - an array of requirements responses
 - *contracts.requirementResponses* - an array or requirement responses
 
-## Background
-
-There are number of scenarios in which structured information on requirements is necessary. See discussion in GitHub issue [#223](https://github.com/open-contracting/standard/issues/223).
-
-## Example usage
+## Example
 
 Below is an example of requirements specified against both an item and a bidder which demonstrates both **AND** and **OR** conditions:
 
@@ -181,17 +177,13 @@ Below is an example of responses which meet the above requirements:
 
 The CCCEV model also defines a number of additional concepts including **formalFrameworks**, used to specify the legal instruments from criteria are derived, **evidence**, used both to specify and provide the evidence required to support a requirement response, and additional properties of *requirements* such as **certificationLevel** which are not currently implemented in this extension.
 
-## Outstanding issues
-
-The extension does not describe formulae for calculated computed values.
-
-The extension does not describe whether data should be published openly or not.
-
 ## Issues
 
 Report issues for this extension in the [ocds-extensions repository](https://github.com/open-contracting/ocds-extensions/issues), putting the extension's name in the issue's title.
 
 ## Changelog
+
+This extension was originally discussed in <https://github.com/open-contracting/standard/issues/223>.
 
 ### 2018-12-18
 

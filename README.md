@@ -185,6 +185,10 @@ Report issues for this extension in the [ocds-extensions repository](https://git
 
 This extension was originally discussed in <https://github.com/open-contracting/standard/issues/223>.
 
+### 2019-03-20
+
+* Set `"uniqueItems": true` on array fields, and add `"minLength": 1` on required string fields.
+
 ### 2018-12-18
 
 * `Requirement.expectedValue` and `RequirementResponse.value` allow boolean values.

@@ -48,8 +48,7 @@ Below is an example of requirements specified against both an item and a bidder 
         "title": "Air intake",
         "description": "The vacuum cleaner air intake must be at least 100W",
         "source": "tenderer",
-        "code": "OCDS-123454-AIR",
-        "featureOf": "item",
+        "relatesTo": "item",
         "relatedItem": "0001",
         "requirementGroups": [
           {
@@ -73,8 +72,7 @@ Below is an example of requirements specified against both an item and a bidder 
         "title": "Warranty",
         "description": "The vacuum cleaner must have warranty support options for at least 36 months",
         "source": "tenderer",
-        "code": "OCDS-123454-WARRANTY",
-        "featureOf": "item",
+        "relatesTo": "item",
         "relatedItem": "0001",
         "requirementGroups": [
           {
@@ -119,8 +117,7 @@ Below is an example of requirements specified against both an item and a bidder 
         "title": "Years trading",
         "description": "Number of years the bidder has been trading",
         "source": "tenderer",
-        "code": "OCDS-123454-YEARS",
-        "featureOf": "tenderer",
+        "relatesTo": "tenderer",
         "requirementGroups": [
           {
             "id": "0003-001",

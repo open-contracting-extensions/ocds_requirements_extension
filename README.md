@@ -49,7 +49,7 @@ Below is an example of requirements specified against both an item and a bidder 
         "description": "The vacuum cleaner air intake must be at least 100W",
         "source": "tenderer",
         "relatesTo": "item",
-        "relatedItem": "0001",
+        "relatedItem": "item1",
         "requirementGroups": [
           {
             "id": "0001-001",
@@ -73,7 +73,7 @@ Below is an example of requirements specified against both an item and a bidder 
         "description": "The vacuum cleaner must have warranty support options for at least 36 months",
         "source": "tenderer",
         "relatesTo": "item",
-        "relatedItem": "0001",
+        "relatedItem": "item1",
         "requirementGroups": [
           {
             "id": "0002-001",
@@ -147,23 +147,28 @@ Below is an example of responses which meet the above requirements:
   "bids": {
     "details": [
       {
+        "id": "1",
         "requirementResponses": [
           {
             "id": "air",
             "value": 125,
-            "requirement": "0001-001-01",
-            "relatedItem": "0001"
+            "requirement": {
+              "id": "0001-001-01"
+            }
           },
           {
             "id": "warranty",
             "value": 36,
-            "requirement": "0002-001-01",
-            "relatedItem": "0001"
+            "requirement": {
+              "id": "0002-001-01"
+            }
           },
           {
             "id": "years",
             "value": 10,
-            "requirement": "0003-001-01"
+            "requirement": {
+              "id": "0003-001-01"
+            }
           }
         ]
       }

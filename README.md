@@ -144,29 +144,31 @@ Below is an example of responses which meet the above requirements:
 
 ```json
 {
-  "bids": [
-    {
-      "requirementResponses": [
-        {
-          "id": "air",
-          "value": 125,
-          "requirement": "0001-001-01",
-          "relatedItem": "0001"
-        },
-        {
-          "id": "warranty",
-          "value": 36,
-          "requirement": "0002-001-01",
-          "relatedItem": "0001"
-        },
-        {
-          "id": "years",
-          "value": 10,
-          "requirement": "0003-001-01"
-        }
-      ]
-    }
-  ]
+  "bids": {
+    "details": [
+      {
+        "requirementResponses": [
+          {
+            "id": "air",
+            "value": 125,
+            "requirement": "0001-001-01",
+            "relatedItem": "0001"
+          },
+          {
+            "id": "warranty",
+            "value": 36,
+            "requirement": "0002-001-01",
+            "relatedItem": "0001"
+          },
+          {
+            "id": "years",
+            "value": 10,
+            "requirement": "0003-001-01"
+          }
+        ]
+      }
+    ]
+  }
 }
 ```
 

@@ -23,7 +23,8 @@
           "type": [
             "string",
             "null"
-          ]
+          ],
+          "minLength": 1
         },
         "description": {
           "title": "Description",
@@ -31,7 +32,8 @@
           "type": [
             "string",
             "null"
-          ]
+          ],
+          "minLength": 1
         },
         "source": {
           "title": "Source",
@@ -70,7 +72,8 @@
           "type": [
             "string",
             "null"
-          ]
+          ],
+          "minLength": 1
         },
         "requirementGroups": {
           "title": "Requirement groups",
@@ -79,9 +82,11 @@
           "items": {
             "$ref": "#/definitions/RequirementGroup"
           },
-          "uniqueItems": true
+          "uniqueItems": true,
+          "minItems": 1
         }
-      }
+      },
+      "minProperties": 1
     },
     "RequirementGroup": {
       "type": "object",
@@ -103,7 +108,8 @@
           "type": [
             "string",
             "null"
-          ]
+          ],
+          "minLength": 1
         },
         "requirements": {
           "title": "Requirements",
@@ -112,9 +118,11 @@
           "items": {
             "$ref": "#/definitions/Requirement"
           },
-          "uniqueItems": true
+          "uniqueItems": true,
+          "minItems": 1
         }
-      }
+      },
+      "minProperties": 1
     },
     "Requirement": {
       "type": "object",
@@ -136,7 +144,8 @@
           "type": [
             "string",
             "null"
-          ]
+          ],
+          "minLength": 1
         },
         "description": {
           "title": "Requirement description",
@@ -144,7 +153,8 @@
           "type": [
             "string",
             "null"
-          ]
+          ],
+          "minLength": 1
         },
         "dataType": {
           "title": "Requirement datatype",
@@ -170,7 +180,8 @@
           "type": [
             "string",
             "null"
-          ]
+          ],
+          "minLength": 1
         },
         "expectedValue": {
           "title": "Expected value",
@@ -181,7 +192,8 @@
             "number",
             "boolean",
             "null"
-          ]
+          ],
+          "minLength": 1
         },
         "minValue": {
           "title": "Minimum value",
@@ -206,7 +218,8 @@
           "description": "Used to specify a particular period the requirement applies to, for example the bidder's turnover in a given year.",
           "$ref": "#/definitions/Period"
         }
-      }
+      },
+      "minProperties": 1
     },
     "RequirementResponse": {
       "type": "object",
@@ -229,7 +242,8 @@
           "type": [
             "string",
             "null"
-          ]
+          ],
+          "minLength": 1
         },
         "description": {
           "title": "Description",
@@ -237,7 +251,8 @@
           "type": [
             "string",
             "null"
-          ]
+          ],
+          "minLength": 1
         },
         "value": {
           "title": "Value",
@@ -248,7 +263,8 @@
             "number",
             "boolean",
             "null"
-          ]
+          ],
+          "minLength": 1
         },
         "period": {
           "title": "Period",
@@ -265,7 +281,8 @@
           "description": "Where this requirement response relates to a tenderer and is provided by the buyer or procuring entity this field should be used to reference the entry in the parties section for the tenderer the response relates to.",
           "$ref": "#/definitions/OrganizationReference"
         }
-      }
+      },
+      "minProperties": 1
     },
     "RequirementReference": {
       "type": "object",
@@ -287,9 +304,11 @@
           "type": [
             "string",
             "null"
-          ]
+          ],
+          "minLength": 1
         }
-      }
+      },
+      "minProperties": 1
     },
     "Bid": {
       "properties": {
@@ -300,7 +319,8 @@
           "items": {
             "$ref": "#/definitions/RequirementResponse"
           },
-          "uniqueItems": true
+          "uniqueItems": true,
+          "minItems": 1
         }
       }
     },
@@ -313,7 +333,8 @@
           "items": {
             "$ref": "#/definitions/Criterion"
           },
-          "uniqueItems": true
+          "uniqueItems": true,
+          "minItems": 1
         }
       }
     },
@@ -326,7 +347,8 @@
           "items": {
             "$ref": "#/definitions/RequirementResponse"
           },
-          "uniqueItems": true
+          "uniqueItems": true,
+          "minItems": 1
         }
       }
     },
@@ -339,7 +361,8 @@
           "items": {
             "$ref": "#/definitions/RequirementResponse"
           },
-          "uniqueItems": true
+          "uniqueItems": true,
+          "minItems": 1
         }
       }
     }

@@ -37,7 +37,7 @@
         },
         "source": {
           "title": "Source",
-          "description": "Source of response to the requirements specified in the criterion, for example responses may be submitted by tenderers or by an assessment committee at the procuringEntity.",
+          "description": "Source of response to the requirements specified in the criterion. For example, responses might be submitted by tenderers or by an assessment committee at the procuringEntity.",
           "type": [
             "string",
             "null"
@@ -53,7 +53,7 @@
         },
         "relatesTo": {
           "title": "Related schema element",
-          "description": "The schema element that the criterion judges, evaluates or assesses. For example criterion may be defined against items or against bidders.",
+          "description": "The schema element that the criterion judges, evaluates or assesses. For example, the criterion might be defined against items or against bidders.",
           "type": [
             "string",
             "null"

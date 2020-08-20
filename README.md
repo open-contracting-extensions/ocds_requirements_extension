@@ -28,12 +28,12 @@ Therefore the CCCEV model can be used to express both **AND** conditions, where 
 
 The extension introduces a new building block for each of the concepts described above, these are added to the following locations in the OCDS schema:
 
-- *tender.criteria* - an array of criteria
-- *tender.criteria.requirementGroups* - an array of requirement groups
-- *tender.criteria.requirementGroups.requirements* - an array of requirements
-- *bids.requirementResponses* - an array of requirement responses (Note: depends on *bid* extension)
-- *awards.requirementResponses* - an array of requirements responses
-- *contracts.requirementResponses* - an array or requirement responses
+* *tender.criteria* - an array of criteria
+* *tender.criteria.requirementGroups* - an array of requirement groups
+* *tender.criteria.requirementGroups.requirements* - an array of requirements
+* *bids.requirementResponses* - an array of requirement responses (Note: depends on *bid* extension)
+* *awards.requirementResponses* - an array of requirements responses
+* *contracts.requirementResponses* - an array or requirement responses
 
 ## Example
 

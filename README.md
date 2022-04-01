@@ -189,6 +189,12 @@ Report issues for this extension in the [ocds-extensions repository](https://git
 
 ## Changelog
 
+### Unreleased
+
+* Add `Criterion.relatedLots` field.
+
+This extension was originally discussed in <https://github.com/open-contracting/ocds-extensions/issues/76>.
+
 ### 2020-06-04
 
 * Review normative and non-normative words.

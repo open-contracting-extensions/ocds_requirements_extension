@@ -77,7 +77,7 @@
         },
         "relatedLots": {
           "title": " Related lot(s)",
-          "description": "If this criterion relates to one or more specific lots, provide the identifier(s) of the related lot(s) here.",
+          "description": "The identifiers of related lots that this criterion applies to.",
           "type": [
             "array",
             "null"

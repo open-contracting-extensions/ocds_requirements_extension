@@ -76,7 +76,7 @@
           "minLength": 1
         },
         "relatedLots": {
-          "title": " Related lot(s)",
+          "title": "Related lot(s)",
           "description": "The identifiers of related lots that this criterion applies to.",
           "type": [
             "array",

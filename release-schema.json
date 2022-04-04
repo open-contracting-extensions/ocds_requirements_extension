@@ -75,6 +75,22 @@
           ],
           "minLength": 1
         },
+        "relatedLots": {
+          "title": "Related lot(s)",
+          "description": "The identifiers of the lots to which this criterion applies.",
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": [
+              "string"
+            ],
+            "minLength": 1
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        },
         "requirementGroups": {
           "title": "Requirement groups",
           "description": "A list of requirement groups for this Criterion. A criterion is satisfied by one or more requirement groups being met. A requirement group is met when all requirements in the group are satisfied.",

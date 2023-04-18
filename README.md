@@ -189,9 +189,10 @@ Report issues for this extension in the [ocds-extensions repository](https://git
 
 ## Changelog
 
-### Unreleased
+### 2023-04-18
 
 * Add `Criterion.relatedLots` field.
+* Remove unnecessary instructions from field descriptions.
 
 ### 2020-06-04
 

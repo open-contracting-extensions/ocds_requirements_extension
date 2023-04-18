@@ -28,7 +28,7 @@
         },
         "description": {
           "title": "Description",
-          "description": "A description of this criterion. Structured information should be provided in its other fields.",
+          "description": "A description of this criterion.",
           "type": [
             "string",
             "null"
@@ -120,7 +120,7 @@
         },
         "description": {
           "title": "Description",
-          "description": "A description of this requirement group. Structured information should be provided in the requirements array.",
+          "description": "A description of this requirement group.",
           "type": [
             "string",
             "null"
@@ -263,7 +263,7 @@
         },
         "description": {
           "title": "Description",
-          "description": "A description of this requirement response. Structured information should be provided in its other fields.",
+          "description": "A description of this requirement response.",
           "type": [
             "string",
             "null"

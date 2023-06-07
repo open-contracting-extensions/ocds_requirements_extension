@@ -3,7 +3,7 @@
     "en": "Requirements"
   },
   "description": {
-    "en": "Adds a criteria section to the tender object and responses sections to bids, awards and contracts. Based on the EU's Core Criterion and Core Evidence Vocabulary (CCCEV)."
+    "en": "Adds fields to express the Core Criterion and Core Evidence Vocabulary (CCCEV)."
   },
   "documentationUrl": {
     "en": "https://extensions.open-contracting.org/en/extensions/requirements/"
@@ -12,8 +12,7 @@
     "1.1"
   ],
   "codelists": [
-    "dataType.csv",
-    "relatesTo.csv"
+    "dataType.csv"
   ],
   "schemas": [
     "release-schema.json"

@@ -1,10 +1,8 @@
 # Requirements
 
-The requirements extension is based on the EU's [Core Criterion and Core Evidence Vocabulary (CCCEV)](https://joinup.ec.europa.eu/node/153001) model for communicating criteria and responses.
+Adds fields to express the [Core Criterion and Core Evidence Vocabulary (CCCEV)](https://semiceu.github.io/CCCEV/).
 
-The extension is designed to allow procuring entities or buyers to express criteria, relating to either items being procured or bidders themselves, as structured data.
-
-Criteria can be responded to either by bidders, buyers or procuring entities, for example a buyer may respond with information about an item whilst a procuring entity may respond with information on whether a bidder is disbarred.
+CCCEV is designed to support the exchange of information between buyers or procuring entities that define criteria and tenderers that respond to these criteria by means of evidences. Criteria can relate to bids, tenderers, lots or items.
 
 If your data does not closely follow the [Core Criterion and Core Evidence Vocabulary (CCCEV)](https://semiceu.github.io/CCCEV/), consider the [Selection criteria](https://extensions.open-contracting.org/en/extensions/selectionCriteria/master/) extension.
 
@@ -13,7 +11,7 @@ If your data does not closely follow the [Core Criterion and Core Evidence Vocab
 The CCCEV model defines the following concepts:
 
 **Criterion**
-A criterion represents a rule or principle used to judge, evaluate or assess either an item or bidder. A criterion is satisfied when one or more of it's requirement groups are satisfied.
+A criterion represents a rule or principle used to judge, evaluate or assess bids, tenderers, lots or items. A criterion is satisfied when one or more of its requirement groups is satisfied.
 
 **Requirement Group**
 A requirement group is a collection of one or more individual requirements. A requirement group is satisfied when all of it's requirements are satisfied.
@@ -26,18 +24,11 @@ A requirements response is an assertion that responds to a specific requirement.
 
 Therefore the CCCEV model can be used to express both **AND** conditions, where a group of requirements must be met to satisfy a criterion, and **OR** conditions, where there are alternative requirements that can satisfy a criterion.
 
-## Schema
-
-The extension introduces a new subschema for each of the concepts described above, these are added to the following locations in the OCDS schema:
-
-* `tender.criteria` - an array of criteria
-* `tender.criteria.requirementGroups` - an array of requirement groups
-* `tender.criteria.requirementGroups.requirements` - an array of requirements
-* `Bid.requirementResponses` - an array of requirement responses (depends on the [Bid statistics and details](https://extensions.open-contracting.org/en/extensions/bids/master/) extension)
+The CCCEV model also defines a number of additional concepts including **formalFrameworks**, used to specify the legal instruments from criteria are derived, **evidence**, used both to specify and provide the evidence required to support a response, and additional properties of *requirements* such as **certificationLevel**. These are not yet implemented in this extension. This extension also does not describe formulae for calculating computed values, nor does it describe whether data should be published openly or not.
 
 ## Example
 
-Below is an example of requirements specified against both an item and a bidder which demonstrates both **AND** and **OR** conditions:
+Criteria for an item and a tenderer, with **AND** and **OR** conditions:
 
 ```json
 {
@@ -47,7 +38,6 @@ Below is an example of requirements specified against both an item and a bidder 
         "id": "0001",
         "title": "Air intake",
         "description": "The vacuum cleaner air intake must be at least 100W",
-        "relatesTo": "item",
         "relatedItem": "item1",
         "requirementGroups": [
           {
@@ -70,7 +60,6 @@ Below is an example of requirements specified against both an item and a bidder 
         "id": "0002",
         "title": "Warranty",
         "description": "The vacuum cleaner must have warranty support options for at least 36 months",
-        "relatesTo": "item",
         "relatedItem": "item1",
         "requirementGroups": [
           {
@@ -113,17 +102,17 @@ Below is an example of requirements specified against both an item and a bidder 
       {
         "id": "0003",
         "title": "Years trading",
-        "description": "Number of years the bidder has been trading",
-        "relatesTo": "tenderer",
+        "description": "Number of years the tenderer has been trading",
+        "relatesToTenderer": true,
         "requirementGroups": [
           {
             "id": "0003-001",
-            "description": "Number of years the bidder has been trading",
+            "description": "Number of years the tenderer has been trading",
             "requirements": [
               {
                 "id": "0003-001-01",
                 "title": "Years trading",
-                "description": "Number of years the bidder has been trading",
+                "description": "Number of years the tenderer has been trading",
                 "dataType": "integer",
                 "pattern": "[0-9]*",
                 "minValue": 3
@@ -137,7 +126,7 @@ Below is an example of requirements specified against both an item and a bidder 
 }
 ```
 
-Below is an example of responses which meet the above requirements:
+Responses to the criteria:
 
 ```json
 {
@@ -174,12 +163,6 @@ Below is an example of responses which meet the above requirements:
 }
 ```
 
-## Further extensions
-
-The CCCEV model also defines a number of additional concepts including **formalFrameworks**, used to specify the legal instruments from criteria are derived, **evidence**, used both to specify and provide the evidence required to support a requirement response, and additional properties of *requirements* such as **certificationLevel** which are not currently implemented in this extension.
-
-This extension does not describe formulae for calculating computed values, nor does it describe whether data should be published openly or not.
-
 ## Issues
 
 Report issues for this extension in the [ocds-extensions repository](https://github.com/open-contracting/ocds-extensions/issues), putting the extension's name in the issue's title.
@@ -193,6 +176,8 @@ Report issues for this extension in the [ocds-extensions repository](https://git
   * `Contract.requirementResponses`
   * `Criterion.source`
   * `RequirementResponse.relatedTenderer`
+* Replace `Criterion.relatesTo` codelist field with `Criterion.relatesToTenderer` boolean field.
+* Remove `relatesTo.csv` codelist.
 * Remove `responseSource.csv` codelist.
 
 ### 2023-04-18

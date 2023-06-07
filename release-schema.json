@@ -3,7 +3,7 @@
     "Criterion": {
       "type": "object",
       "title": "Criterion",
-      "description": "A criterion on which either bidders or items will be judged, evaluated or assessed.",
+      "description": "A criterion on which bids, tenderers, lots or items will be judged, evaluated or assessed.",
       "required": [
         "id"
       ],
@@ -35,24 +35,17 @@
           ],
           "minLength": 1
         },
-        "relatesTo": {
-          "title": "Related schema element",
-          "description": "The schema element that the criterion judges, evaluates or assesses. For example, the criterion might be defined against items or against bidders.",
+        "relatesToTenderer": {
+          "title": "Relates to tenderer",
+          "description": "The criterion judges, evaluates or assesses a tenderer.",
           "type": [
-            "string",
+            "boolean",
             "null"
-          ],
-          "codelist": "relatesTo.csv",
-          "openCodelist": false,
-          "enum": [
-            "tenderer",
-            "item",
-            null
           ]
         },
         "relatedItem": {
           "title": "Related item",
-          "description": "Where relatesTo = \"item\" this field must be populated with the id of the item in this tender section which the criterion relates to. Where relatesTo <> \"item\" this field should be omitted.",
+          "description": "The identifier of the item in the tender section to which this criterion applies.",
           "type": [
             "string",
             "null"
@@ -156,7 +149,7 @@
         },
         "dataType": {
           "title": "Requirement datatype",
-          "description": "The data type in which the requirement response must be provided.",
+          "description": "The data type in which the response must be provided.",
           "type": [
             "string",
             "null"
@@ -174,7 +167,7 @@
         },
         "pattern": {
           "title": "Response validation pattern",
-          "description": "A regular expression against which validate the requirement response.",
+          "description": "A regular expression with which to validate the response.",
           "type": [
             "string",
             "null"
@@ -183,7 +176,7 @@
         },
         "expectedValue": {
           "title": "Expected value",
-          "description": "Used to state the requirement when the response must be particular value.",
+          "description": "The expected value of the requirement, when the response must be specific value.",
           "type": [
             "string",
             "integer",
@@ -195,7 +188,7 @@
         },
         "minValue": {
           "title": "Minimum value",
-          "description": "Used to state the lower bound of the requirement when the response must be within a certain range.",
+          "description": "The lower bound of the requirement, when the response must be within a certain range.",
           "type": [
             "integer",
             "number",
@@ -204,7 +197,7 @@
         },
         "maxValue": {
           "title": "Maximum value",
-          "description": "Used to state the upper bound of the requirement when the response must be within a certain range.",
+          "description": "The upper bound of the requirement, when the response must be within a certain range.",
           "type": [
             "integer",
             "number",
@@ -213,7 +206,7 @@
         },
         "period": {
           "title": "Period",
-          "description": "Used to specify a particular period the requirement applies to, for example the bidder's turnover in a given year.",
+          "description": "The period to which the requirement applies: for example, the tenderer's turnover in a given year.",
           "$ref": "#/definitions/Period"
         }
       },
@@ -221,8 +214,8 @@
     },
     "RequirementResponse": {
       "type": "object",
-      "title": "Requirement Response",
-      "description": "An assertion that responds to a single requirement. A requirement response provides the value for the requirement and may provide the period to which it applies.",
+      "title": "Requirement response",
+      "description": "An assertion that responds to a single requirement. A response provides the value for the requirement and may provide the period to which it applies.",
       "required": [
         "id",
         "requirement"
@@ -230,13 +223,13 @@
       "properties": {
         "id": {
           "title": "Identifier",
-          "description": "The identifier for this requirement response. It must be unique and cannot change within the Open Contracting Process it is part of (defined by a single ocid). See the [identifier guidance](http://standard.open-contracting.org/latest/en/schema/identifiers/) for further details.",
+          "description": "The unique identifier of this response in the context of the contracting process.",
           "type": "string",
           "minLength": 1
         },
         "title": {
           "title": "Title",
-          "description": "A title for this requirement response.",
+          "description": "The title of this response.",
           "type": [
             "string",
             "null"
@@ -245,7 +238,7 @@
         },
         "description": {
           "title": "Description",
-          "description": "A description of this requirement response.",
+          "description": "The description of this response.",
           "type": [
             "string",
             "null"
@@ -254,7 +247,7 @@
         },
         "value": {
           "title": "Value",
-          "description": "The value of this requirement response. The value must be of the type defined in the requirement.dataType field.",
+          "description": "The value of this response.",
           "type": [
             "string",
             "integer",
@@ -266,12 +259,12 @@
         },
         "period": {
           "title": "Period",
-          "description": "The period which the requirement response is applicable to.",
+          "description": "The period to which the response applies.",
           "$ref": "#/definitions/Period"
         },
         "requirement": {
           "title": "Related requirement",
-          "description": "The id and title of the requirement which the response is applicable to.",
+          "description": "A reference to the requirement to which the response applies.",
           "$ref": "#/definitions/RequirementReference"
         }
       },
@@ -280,20 +273,20 @@
     "RequirementReference": {
       "type": "object",
       "title": "Requirement reference",
-      "description": "Used to cross reference a requirement.",
+      "description": "A reference to a requirement.",
       "required": [
         "id"
       ],
       "properties": {
         "id": {
           "title": "Requirement ID",
-          "description": "The id of the requirement which the response is applicable to.",
+          "description": "The identifier of the requirement to which the response applies.",
           "type": "string",
           "minLength": 1
         },
         "title": {
           "title": "Requirement title",
-          "description": "The title of the requirement which the response is applicable to.",
+          "description": "The title of the requirement to which the response applies.",
           "type": [
             "string",
             "null"
@@ -307,7 +300,7 @@
       "properties": {
         "requirementResponses": {
           "title": "Requirement responses",
-          "description": "If the requirements extension is also in use, the detailed responses of this bid to the tender requirements can be specified here.",
+          "description": "The responses of this bid to the requirements.",
           "type": "array",
           "items": {
             "$ref": "#/definitions/RequirementResponse"
@@ -321,7 +314,7 @@
       "properties": {
         "criteria": {
           "title": "Criteria",
-          "description": "A list of criteria on which either bidders or items will be judged, evaluated or assessed.",
+          "description": "Criteria on which bids, tenderers, lots or items will be judged, evaluated or assessed.",
           "type": "array",
           "items": {
             "$ref": "#/definitions/Criterion"

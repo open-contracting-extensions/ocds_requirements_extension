@@ -13,8 +13,7 @@
   ],
   "codelists": [
     "dataType.csv",
-    "relatesTo.csv",
-    "responseSource.csv"
+    "relatesTo.csv"
   ],
   "schemas": [
     "release-schema.json"

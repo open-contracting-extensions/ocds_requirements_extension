@@ -35,22 +35,6 @@
           ],
           "minLength": 1
         },
-        "source": {
-          "title": "Source",
-          "description": "Source of response to the requirements specified in the criterion. For example, responses might be submitted by tenderers or by an assessment committee at the procuringEntity.",
-          "type": [
-            "string",
-            "null"
-          ],
-          "codelist": "responseSource.csv",
-          "openCodelist": false,
-          "enum": [
-            "tenderer",
-            "buyer",
-            "procuringEntity",
-            null
-          ]
-        },
         "relatesTo": {
           "title": "Related schema element",
           "description": "The schema element that the criterion judges, evaluates or assesses. For example, the criterion might be defined against items or against bidders.",
@@ -289,11 +273,6 @@
           "title": "Related requirement",
           "description": "The id and title of the requirement which the response is applicable to.",
           "$ref": "#/definitions/RequirementReference"
-        },
-        "relatedTenderer": {
-          "title": "Related tenderer",
-          "description": "Where this requirement response relates to a tenderer and is provided by the buyer or procuring entity this field should be used to reference the entry in the parties section for the tenderer the response relates to.",
-          "$ref": "#/definitions/OrganizationReference"
         }
       },
       "minProperties": 1
@@ -346,34 +325,6 @@
           "type": "array",
           "items": {
             "$ref": "#/definitions/Criterion"
-          },
-          "uniqueItems": true,
-          "minItems": 1
-        }
-      }
-    },
-    "Award": {
-      "properties": {
-        "requirementResponses": {
-          "title": "Requirement responses",
-          "description": "A list of the detailed responses of this award to the requirements of the tender.",
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/RequirementResponse"
-          },
-          "uniqueItems": true,
-          "minItems": 1
-        }
-      }
-    },
-    "Contract": {
-      "properties": {
-        "requirementResponses": {
-          "title": "Requirement responses",
-          "description": "A list of the detailed responses of this contract to the requirements of the tender.",
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/RequirementResponse"
           },
           "uniqueItems": true,
           "minItems": 1

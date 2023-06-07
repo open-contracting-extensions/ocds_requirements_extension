@@ -49,7 +49,6 @@ Below is an example of requirements specified against both an item and a bidder 
         "id": "0001",
         "title": "Air intake",
         "description": "The vacuum cleaner air intake must be at least 100W",
-        "source": "tenderer",
         "relatesTo": "item",
         "relatedItem": "item1",
         "requirementGroups": [
@@ -73,7 +72,6 @@ Below is an example of requirements specified against both an item and a bidder 
         "id": "0002",
         "title": "Warranty",
         "description": "The vacuum cleaner must have warranty support options for at least 36 months",
-        "source": "tenderer",
         "relatesTo": "item",
         "relatedItem": "item1",
         "requirementGroups": [
@@ -118,7 +116,6 @@ Below is an example of requirements specified against both an item and a bidder 
         "id": "0003",
         "title": "Years trading",
         "description": "Number of years the bidder has been trading",
-        "source": "tenderer",
         "relatesTo": "tenderer",
         "requirementGroups": [
           {
@@ -190,6 +187,15 @@ This extension does not describe formulae for calculating computed values, nor d
 Report issues for this extension in the [ocds-extensions repository](https://github.com/open-contracting/ocds-extensions/issues), putting the extension's name in the issue's title.
 
 ## Changelog
+
+### 2023-06-07
+
+* Remove fields:
+  * `Award.requirementResponses`
+  * `Contract.requirementResponses`
+  * `Criterion.source`
+  * `RequirementResponse.relatedTenderer`
+* Remove `responseSource.csv` codelist.
 
 ### 2023-04-18
 

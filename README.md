@@ -6,6 +6,8 @@ The extension is designed to allow procuring entities or buyers to express crite
 
 Criteria can be responded to either by bidders, buyers or procuring entities, for example a buyer may respond with information about an item whilst a procuring entity may respond with information on whether a bidder is disbarred.
 
+If your data does not closely follow the [Core Criterion and Core Evidence Vocabulary (CCCEV)](https://semiceu.github.io/CCCEV/), consider the [Selection criteria](https://extensions.open-contracting.org/en/extensions/selectionCriteria/master/) extension.
+
 ## CCCEV Model
 
 The CCCEV model defines the following concepts:

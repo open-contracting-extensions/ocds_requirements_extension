@@ -63,8 +63,8 @@
             "type": "string",
             "minLength": 1
           },
-          "minItems": 1,
-          "uniqueItems": true
+          "uniqueItems": true,
+          "minItems": 1
         },
         "requirementGroups": {
           "title": "Requirement groups",

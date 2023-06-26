@@ -1,9 +1,9 @@
 {
   "definitions": {
     "Criterion": {
-      "type": "object",
       "title": "Criterion",
       "description": "A criterion on which bids, tenderers, lots or items will be judged, evaluated or assessed.",
+      "type": "object",
       "required": [
         "id"
       ],
@@ -80,9 +80,9 @@
       "minProperties": 1
     },
     "RequirementGroup": {
-      "type": "object",
       "title": "Requirement group",
       "description": "A requirement group is a set of requirements that must be fulfilled together to validate a criterion.",
+      "type": "object",
       "required": [
         "id"
       ],
@@ -116,9 +116,9 @@
       "minProperties": 1
     },
     "Requirement": {
-      "type": "object",
       "title": "Requirement",
       "description": "An atomic requirement. Requirements can specify the expected value that the response has to contain, or a range of threshold values within which the response has to fit in. The requirement may apply to a certain period of time.",
+      "type": "object",
       "required": [
         "id"
       ],
@@ -213,9 +213,9 @@
       "minProperties": 1
     },
     "RequirementResponse": {
-      "type": "object",
       "title": "Requirement response",
       "description": "An assertion that responds to a single requirement. A response provides the value for the requirement and may provide the period to which it applies.",
+      "type": "object",
       "required": [
         "id",
         "requirement"
@@ -271,9 +271,9 @@
       "minProperties": 1
     },
     "RequirementReference": {
-      "type": "object",
       "title": "Requirement reference",
       "description": "A reference to a requirement.",
+      "type": "object",
       "required": [
         "id"
       ],

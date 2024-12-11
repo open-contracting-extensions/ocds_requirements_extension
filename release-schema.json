@@ -179,7 +179,6 @@
           "description": "The expected value of the requirement, when the response must be specific value.",
           "type": [
             "string",
-            "integer",
             "number",
             "boolean",
             "null"
@@ -190,7 +189,6 @@
           "title": "Minimum value",
           "description": "The lower bound of the requirement, when the response must be within a certain range.",
           "type": [
-            "integer",
             "number",
             "null"
           ]
@@ -199,7 +197,6 @@
           "title": "Maximum value",
           "description": "The upper bound of the requirement, when the response must be within a certain range.",
           "type": [
-            "integer",
             "number",
             "null"
           ]
@@ -250,7 +247,6 @@
           "description": "The value of this response.",
           "type": [
             "string",
-            "integer",
             "number",
             "boolean",
             "null"

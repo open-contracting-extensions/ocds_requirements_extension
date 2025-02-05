@@ -171,12 +171,11 @@ Report issues for this extension in the [ocds-extensions repository](https://git
 
 ### 2023-06-07
 
-* Remove fields:
-  * `Award.requirementResponses`
-  * `Contract.requirementResponses`
-  * `Criterion.source`
-  * `RequirementResponse.relatedTenderer`
 * Replace `Criterion.relatesTo` codelist field with `Criterion.relatesToTenderer` boolean field.
+* Remove `Award.requirementResponses`.
+* Remove `Contract.requirementResponses`.
+* Remove `Criterion.source`.
+* Remove `RequirementResponse.relatedTenderer`.
 * Remove `relatesTo.csv` codelist.
 * Remove `responseSource.csv` codelist.
 

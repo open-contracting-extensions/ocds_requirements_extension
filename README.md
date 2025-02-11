@@ -176,8 +176,8 @@ Report issues for this extension in the [ocds-extensions repository](https://git
 * Remove `Contract.requirementResponses`.
 * Remove `Criterion.source`.
 * Remove `RequirementResponse.relatedTenderer`.
-* Remove `relatesTo.csv` codelist.
-* Remove `responseSource.csv` codelist.
+* Remove the `relatesTo.csv` codelist.
+* Remove the `responseSource.csv` codelist.
 
 ### 2023-04-18
 
